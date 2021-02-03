@@ -1,13 +1,28 @@
 import unittest
 
-def is_even(nbr):
-  return nbr %2 == 0
+def fizzbuzz():
+    numbers = []
+    for i in range(1, 101):
+        if (i % 3 == 0):
+            numbers.append("Fizz")
+        elif (i % 5 == 0):
+            numbers.append("Buzz")
+        else:
+            numbers.append(i)
+    return numbers
+        
+class FizzBuzzTest(unittest.TestCase):
+  def test_regular_numbers_return_digits(self):
+      self.assertEqual(1, fizzbuzz()[0])
+      self.assertEqual(2, fizzbuzz()[1])
 
+  def test_three_multiples_return_Fizz(self):
+      self.assertEqual("Fizz", fizzbuzz()[2])
+      self.assertEqual("Fizz", fizzbuzz()[5])
 
-class MyTest(unittest.TestCase):
-  def test_is_even(self):
-    self.assertTrue(is_even(2))
-    self.assertFalse(is_even(3))
+  def test_five_multiples_return_Buzz(self):
+      self.assertEqual("Buzz", fizzbuzz()[4])
+      self.assertEqual("Buzz", fizzbuzz()[9])
 
 if __name__ == '__main__':
   unittest.main()
